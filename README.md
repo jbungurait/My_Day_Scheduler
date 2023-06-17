@@ -75,3 +75,6 @@ THEN the saved events persist
   ## Contribution
 
   Send me an email with suggestions.
+
+  ## Screenshot
+  ![My Work Day Scheduler](./assets/images/WorkDayScheduler.png)
