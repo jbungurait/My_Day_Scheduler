@@ -4,8 +4,6 @@ const saveButton = $(".saveBtn");
 const savedHistory = function () {
   $(".time-block").each(function() {
   var savedData = localStorage.getItem($(this).attr("id"));
-  console.log(savedData);
-  console.log(this);
   $(this).children(".description").val(savedData);
   })
 };
