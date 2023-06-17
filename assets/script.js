@@ -1,15 +1,24 @@
 var currentTime = dayjs().hour();
 const saveButton = $(".saveBtn");
 
-saveButton.on("click", function() {
-const description = $('.description').val();
-
-localStorage.setItem(this.parentElement.id, description);
-});
+const savedHistory = function () {
+  $(".time-block").each(function() {
+  var savedData = localStorage.getItem($(this).attr("id"));
+  console.log(savedData);
+  console.log(this);
+  $(this).children(".description").val(savedData);
+  })
+};
 
 const mapHours = function (currentTime) {
   $(".time-block").each(function() {
-    let planner = parseInt( $(this).attr("id").split("-")[1])
+    let planner = parseInt( $(this).attr("id").split("-")[1]);
+
+    saveButton.on("click", function() {
+      const description = $(this).siblings(".description").val();
+      console.log(description);
+      localStorage.setItem(this.parentElement.id, description);
+      });
 
     if (planner < currentTime){
       $(this).removeClass("present");
@@ -29,5 +38,5 @@ const mapHours = function (currentTime) {
     var today = dayjs().format('dddd, MMMM D, YYYY'); 
     $('#currentDay').text(today); 
   };
-
+  savedHistory();
   mapHours(currentTime);
